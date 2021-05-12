@@ -1,3 +1,4 @@
+  
 git add --all
-git commit -m "add nick name page handling form post2"
+git commit -m "upgrade people page using Table tag"
 git push -u origin master
