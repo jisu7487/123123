@@ -78,6 +78,16 @@ function nickname(res, postData) {
   res.end();
 }
 
+function people(res){
+  str = fs.readFileSync('people.json', 'utf-8');
+  obj = JSON.parse(str);
+  console.log(obj.name + ': ' + obj.house);
+  res.writeHead(200, { 'Content-Type': 'text/html' });
+  res.write(str);
+  res.end();
+
+}
+
 exports.start = start;
 exports.hello = hello;
 exports.wait = wait;
@@ -85,3 +95,4 @@ exports.randomWait = randomWait;
 exports.firstHtml = firstHtml;
 exports.htmlFile = htmlFile;
 exports.serverInfo = serverInfo;
+exports.people = people;
