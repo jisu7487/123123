@@ -9,6 +9,8 @@ function start(route, handle) {
   function onRequest(req, res) {
     console.log('Request receive.');
     pathname = new url.URL(req.url, baseUrl).pathname;
+    let postData = '';
+    req.setEncoding('utf-8');
     route(pathname, handle, res);
   }
 
