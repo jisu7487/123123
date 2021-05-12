@@ -11,7 +11,13 @@ function start(route, handle) {
     pathname = new url.URL(req.url, baseUrl).pathname;
     let postData = '';
     req.setEncoding('utf-8');
-    route(pathname, handle, res);
+    req.addListener('data', function (chunk) {
+      postData += chunk;
+      console.log('chunk: ' + chunk);
+    });
+    req.addListener('end', function () {
+      route(pathname, handle, res, postData);
+    });
   }
 
   server = http.createServer(onRequest);
